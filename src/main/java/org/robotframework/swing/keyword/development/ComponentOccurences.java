@@ -71,4 +71,12 @@ public class ComponentOccurences {
         }
         return null;
     }
+    public Class<? extends Component> instanceOf(Component component) {
+        for (Class<? extends Component> clazz: indexesByType.keySet()) {
+            if (clazz.isInstance(component)) {
+                return clazz;
+            }
+        }
+        return null;
+    }
 }

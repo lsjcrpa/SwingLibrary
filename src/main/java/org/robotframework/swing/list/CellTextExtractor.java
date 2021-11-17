@@ -42,7 +42,7 @@ public class CellTextExtractor {
     }
 
     private WithText coerceToWithText(Object element) {
-        return (WithText) Retrofit.complete(element, WithText.class);
+        return Retrofit.complete(element, WithText.class);
     }
 
     private Component getRenderedComponent(final int itemIndex) {
@@ -56,10 +56,6 @@ public class CellTextExtractor {
     }
 
     private WithText wrapElementToWithText(final int itemIndex) {
-        return new WithText() {
-            public String getText() {
-                return listModel().getElementAt(itemIndex).toString();
-            }
-        };
+        return () -> listModel().getElementAt(itemIndex).toString();
     }
 }

@@ -16,6 +16,10 @@
 
 package org.robotframework.swing.arguments;
 
+/**
+ * 负责awt和swing的参数转换
+ * @param <T>
+ */
 public class ArgumentParser<T> {
     private ArgumentHandler<T> argumentHandler;
 

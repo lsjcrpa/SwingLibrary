@@ -31,7 +31,7 @@ public class ByTooltipComponentChooser implements ComponentChooser {
 
     @Override
     public boolean checkComponent(Component component) {
-            WithTooltip withTooltip = (WithTooltip) Retrofit.partial(component,
+            WithTooltip withTooltip = Retrofit.partial(component,
                     WithTooltip.class);
             return ObjectUtils.nullSafeEquals(expectedText, withTooltip.getToolTipText());
     }

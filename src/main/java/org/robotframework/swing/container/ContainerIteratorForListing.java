@@ -1,5 +1,7 @@
 package org.robotframework.swing.container;
 
+import org.jretrofit.Retrofit;
+import org.robotframework.swing.chooser.WithText;
 import org.robotframework.swing.keyword.development.ComponentOccurences;
 
 
@@ -44,15 +46,28 @@ public class ContainerIteratorForListing {
 
     private void operateOnComponent(Component component) {
         String componentName = componentToString(component);
+
         String formattedName =spacesToFormatOutputAsTree(level) +
                 " Level: " + level +
                 " Component: " + componentName +
                 " Index: " + occurences.countIndexOf(component) +
-                " Name: " + component.getName();
+                " Instance: "+occurences.instanceOf(component) +
+                " Name: " + component.getName() +
+                " Text: " + getText(component);
         formatted.add(formattedName);
         unformatted.add(componentName);
         System.out.println(formattedName);
     }
+    private String getText(Component component){
+        try {
+            WithText withText = Retrofit.partial(component,
+                    WithText.class);
+            return withText.getText();
+        }catch (Exception e){
+            return null;
+        }
+    }
+
 
     private String componentToString(Component component) {
         String componentString = component.toString();

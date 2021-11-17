@@ -35,7 +35,7 @@ public class ButtonOperatorWrapper {
         try {
             buttonOperator.waitComponentEnabled();
         } catch (InterruptedException e) {
-            throw new RuntimeException("Wait for buttion interrupted", e);
+            throw new RuntimeException("Wait for button interrupted", e);
         }
     }
 

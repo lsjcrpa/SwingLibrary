@@ -31,7 +31,7 @@ public class ByTextComponentChooser implements ComponentChooser {
 
     @Override
     public boolean checkComponent(Component component) {
-        WithText withText = (WithText) Retrofit.partial(component,
+        WithText withText = Retrofit.partial(component,
                 WithText.class);
         return ObjectUtils.nullSafeEquals(expectedText, withText.getText());
     }

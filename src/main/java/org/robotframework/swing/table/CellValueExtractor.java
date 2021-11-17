@@ -67,17 +67,13 @@ public class CellValueExtractor {
     }
 
     private WithText coerceToWithText(Object element) {
-        return (WithText) Retrofit.complete(element, WithText.class);
+        return Retrofit.complete(element, WithText.class);
     }
 
     private WithText wrapElementToWithText(final int rowIndex, final int columnIndex) {
-        return new WithText() {
-            public String getText() {
-                return jTableOperator.getModel()
-                        .getValueAt(rowIndex, columnIndex)
-                        .toString();
-            }
-        };
+        return () -> jTableOperator.getModel()
+                .getValueAt(rowIndex, columnIndex)
+                .toString();
     }
 
     private Component getTableCellRendererComponentSmoothly(final int row, final int column, final TableCellRenderer renderer,
